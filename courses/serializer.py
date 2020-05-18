@@ -1,11 +1,14 @@
 from rest_framework import serializers
 from .models import Course # we need to serialize the model data
 
-class CourseSerializer(serializers.ModelSerializer):
+#class CourseSerializer(serializers.ModelSerializer):
+# you can use the HyperlinkedModelSerializer SO a 'url' FIELD can be added to the fields property for us.
+#the url will be the link to the specific model data
+class CourseSerializer(serializers.HyperlinkedModelSerializer):
     """Serializer for Course object"""
 
     #
     class Meta:
         model = Course # name of model
-        fields = ('id', 'name', 'language', 'price') #fields we want to serialize( convert to/from JSON)
+        fields = ('id', 'url', 'name', 'language', 'price') #fields we want to serialize( convert to/from JSON)
         read_only_Fields = ('id',) #fields that we want to protect
