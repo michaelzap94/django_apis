@@ -51,6 +51,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+#REST FRAMEWORK SPECIFIC
+# The default permission is ‘rest_framework.permissions.AllowAny’, which – as the name suggests – allows everyone to do anything. 
+# Let’s protect the API so that only logged-in users have access. by adding the following entry:
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
 ROOT_URLCONF = 'api.urls'
 
 TEMPLATES = [
